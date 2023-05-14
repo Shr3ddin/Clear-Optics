@@ -1,0 +1,17 @@
+@use '../utilities/colors' as *;
+
+
+// Utility classes
+.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.flex {
+	display: flex;
+}
+
+.grid {
+	display: grid;
+}

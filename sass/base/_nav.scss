@@ -1,0 +1,15 @@
+@use '../utilities/colors' as *;
+
+.nav {
+	display: none;
+
+	&__items {
+		margin-right: 6em;
+		gap: 2em;
+	}
+
+	&__item {
+		color: $third;
+		font-size: 1.4rem;
+	}
+}
