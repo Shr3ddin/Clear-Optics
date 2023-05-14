@@ -1,9 +1,108 @@
+@use '../utilities/colors' as *;
+
 @media (min-width: 992px) {
-    .nav {
-        display: block;
-    }
-    
-    .hamburger {
-        display: none;
-    }
+	.header {
+		display: flex;
+
+		&__logo {
+			align-items: center;
+		}
+	}
+
+	.nav-mobile {
+		display: none;
+	}
+
+	.nav {
+		display: block;
+
+		&__items {
+			gap: 4.5em;
+		}
+
+		&__items li:nth-child(2) a {
+			color: #7b113a;
+			font-weight: 700;
+		}
+
+		&__items li:nth-child(1) a:before {
+			position: absolute;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2.5rem;
+			color: $foot-link;
+			top: -33px;
+			left: 24px;
+			content: '\f005';
+		}
+
+		&__items li:nth-child(2) a:before {
+			position: absolute;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2.5rem;
+			font-weight: 400;
+			color: $foot-link;
+			top: -33px;
+			left: 45px;
+			content: '\f06e';
+		}
+
+		&__items li:nth-child(3) a:before {
+			position: absolute;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2.5rem;
+			color: $foot-link;
+			top: -33px;
+			left: 20px;
+			content: '\f02e';
+		}
+
+		&__items li:nth-child(4) a:before {
+			position: absolute;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2.5rem;
+			color: $foot-link;
+			top: -33px;
+			left: 33px;
+			content: '\f007';
+		}
+
+		&__items li:nth-child(5) a:before {
+			position: absolute;
+			font-family: 'Font Awesome 5 Free';
+			font-size: 2.5rem;
+			color: $foot-link;
+			top: -33px;
+			left: 17px;
+			content: '\f075';
+		}
+
+		&__item {
+			position: relative;
+			color: $third;
+			font-size: 1.6rem;
+			transition: transform 0.3s ease-in-out;
+		}
+
+		&__item::after {
+			content: '';
+			position: absolute;
+			bottom: -1px;
+			left: 0;
+			height: 3px;
+			width: 100%;
+			background-color: $link;
+			transform: scaleX(0);
+			transform-origin: right;
+			transition: transform 0.3s;
+		}
+
+		&__item:hover::after {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+	}
+
+	.hamburger {
+		display: none;
+	}
 }

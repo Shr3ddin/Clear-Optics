@@ -12,9 +12,12 @@ html {
 }
 
 body {
-  font-family: "Comfortaa", cursive;
-  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }
 
 ul {
@@ -44,11 +47,8 @@ button {
 }
 
 .header {
-  width: 100%;
-  top: 0;
-  left: 0;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-end;
+  justify-content: space-around;
   padding: 1em 0;
   background: rgba(255, 255, 255, 0.44);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -58,30 +58,54 @@ button {
 }
 .header__logo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   padding: 0 0.5em;
 }
 .header__logo img {
-  width: 90px;
-  height: 50px;
+  width: 80px;
+  height: 45px;
+  margin-right: 2em;
 }
 .header__logo span {
-  display: none;
   padding: 0 0.5em;
   color: #000000;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 .nav {
   display: none;
 }
-.nav__items {
-  margin-right: 6em;
-  gap: 2em;
+
+.nav-mobile {
+  position: absolute;
+  top: 90px;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 80%;
+  transform: translateX(-100%);
+  background: rgba(255, 255, 255, 0.44);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease-in-out;
 }
-.nav__item {
+.nav-mobile--active {
+  transform: translateX(0);
+}
+.nav-mobile__items {
+  flex-direction: column;
+  gap: 3em;
+}
+.nav-mobile__item {
+  font-size: 2.2rem;
   color: #000000;
-  font-size: 1.4rem;
+  transition: colo3 0.3s ease-in-out;
+}
+.nav-mobile__item:hover {
+  color: #02affb;
 }
 
 /*!
@@ -92,6 +116,9 @@ button {
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
+  position: absolute;
+  top: 15px;
+  left: 10px;
   padding: 15px 15px;
   display: inline-block;
   cursor: pointer;
@@ -192,14 +219,93 @@ button {
   transition-delay: 0.075s;
 }
 
-@media (min-width: 576px) {
-  .header__logo span {
-    display: block;
-  }
-}
 @media (min-width: 992px) {
+  .header {
+    display: flex;
+  }
+  .header__logo {
+    align-items: center;
+  }
+  .nav-mobile {
+    display: none;
+  }
   .nav {
     display: block;
+  }
+  .nav__items {
+    gap: 4.5em;
+  }
+  .nav__items li:nth-child(2) a {
+    color: #7b113a;
+    font-weight: 700;
+  }
+  .nav__items li:nth-child(1) a:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-size: 2.5rem;
+    color: #8f8f94;
+    top: -33px;
+    left: 24px;
+    content: "\f005";
+  }
+  .nav__items li:nth-child(2) a:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #8f8f94;
+    top: -33px;
+    left: 45px;
+    content: "\f06e";
+  }
+  .nav__items li:nth-child(3) a:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-size: 2.5rem;
+    color: #8f8f94;
+    top: -33px;
+    left: 20px;
+    content: "\f02e";
+  }
+  .nav__items li:nth-child(4) a:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-size: 2.5rem;
+    color: #8f8f94;
+    top: -33px;
+    left: 33px;
+    content: "\f007";
+  }
+  .nav__items li:nth-child(5) a:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-size: 2.5rem;
+    color: #8f8f94;
+    top: -33px;
+    left: 17px;
+    content: "\f075";
+  }
+  .nav__item {
+    position: relative;
+    color: #000000;
+    font-size: 1.6rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  .nav__item::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #02affb;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+  }
+  .nav__item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
   .hamburger {
     display: none;
